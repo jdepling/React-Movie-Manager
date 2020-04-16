@@ -45,13 +45,15 @@ export class AddMovie extends React.Component {
             },
             body: data
         });
+
+        document.getElementById("form").reset();
     }
 
   render () {
     return (
         <div class="container">
             <h1>Add a movie</h1>
-            <form onSubmit={this.handleSubmit}>
+            <form id="form" ref={(el) => this.myFormRef = el} onSubmit={this.handleSubmit}>
                 <div class="form-group">
                     <label for="name">Name of movie:
                         <input

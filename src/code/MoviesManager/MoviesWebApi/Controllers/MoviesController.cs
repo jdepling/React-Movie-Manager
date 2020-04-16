@@ -51,8 +51,11 @@ namespace MoviesWebApi.Controllers
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            var movie = _movieService.GetMovie(id);
+            _movieService.DeleteMovie(id);
+            return Ok($"Deleted {movie.Name}");
         }
     }
 }

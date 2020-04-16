@@ -12,9 +12,22 @@ export class Movies extends Component {
         this.populateMovieData();
     }
 
+    static deleteMovie(id) {
+        let path = 'api/movies/' + id;
+        fetch(path, {
+            method: 'DELETE',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+        });
+
+        window.location.reload(false);
+    }
+
     static renderMoviesTable(movies) {
         return (
-            <table className='table table-striped' aria-labelledby="tabelLabel">
+            <table id="movieTable"className='table table-striped' aria-labelledby="tabelLabel">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -27,7 +40,7 @@ export class Movies extends Component {
                 <tbody>
                     {movies.map(movie =>
                         <tr key={movie.id}>
-                            <td>{movie.id}</td>
+                            <td><button type="button" className="btn btn-danger btn-sm" onClick={() => this.deleteMovie(movie.id)}>X</button>{movie.id}</td>
                             <td>{movie.name}</td>
                             <td>{movie.rating}</td>
                             <td>{movie.genre}</td>

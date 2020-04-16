@@ -9,5 +9,8 @@ namespace Movies.Infrastructure
     {
         IEnumerable<Movie> RetrieveMovies(); // TODO - this needs to be the domain movie model not the view model
         void AddMovie(Movie movie);
+        public Movie GetMovie(int id);
+        public void DeleteMovie(int id);
+        
     }
 }

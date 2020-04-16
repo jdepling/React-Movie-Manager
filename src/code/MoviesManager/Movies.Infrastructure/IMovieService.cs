@@ -7,5 +7,8 @@ namespace Movies.Infrastructure
     {
         IEnumerable<Movie> RetrieveMovies();
         void AddMovie(Movie movie);
+        public Movie GetMovie(int id);
+        public void DeleteMovie(int id);
+       
     }
 }

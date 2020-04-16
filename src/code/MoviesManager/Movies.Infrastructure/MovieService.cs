@@ -30,5 +30,15 @@ namespace Movies.Infrastructure
             return _movieStore.RetrieveMovies(); // TODO - map domain model to view model
                
         }
+
+        public Movie GetMovie(int id)
+        {
+            return _movieStore.GetMovie(id);
+        }
+
+        public void DeleteMovie(int id)
+        {
+            _movieStore.DeleteMovie(id);
+        }
     }
 }

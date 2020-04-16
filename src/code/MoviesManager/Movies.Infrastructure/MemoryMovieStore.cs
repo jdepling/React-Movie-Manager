@@ -38,8 +38,22 @@ namespace Movies.Infrastructure
 
         public void AddMovie(Movie movie)
         {
-            movie.Id = Movies.Count + 10001;
+            if (Movies.Any())
+                movie.Id = Movies.Last().Id + 1;
+            else
+                movie.Id = 10001;
+
             Movies.Add(movie);
+        }
+
+        public Movie GetMovie(int id)
+        {
+            return Movies.Where(movie => movie.Id == id).FirstOrDefault();
+        }
+
+        public void DeleteMovie(int id)
+        {
+            Movies.Remove(GetMovie(id));
         }
     }
 }
